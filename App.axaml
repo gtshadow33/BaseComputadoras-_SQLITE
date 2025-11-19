@@ -1,7 +1,7 @@
 <Application xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              x:Class="BaseComputadoras.App"
-             RequestedThemeVariant="Dark">
+             RequestedThemeVariant="Light">
 
     <Application.Styles>
         <!-- Tema Fluent -->
@@ -9,16 +9,17 @@
 
         <!-- Estilos globales para controles -->
         <Style Selector="TextBlock">
-            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Foreground" Value="Black"/>
         </Style>
 
         <Style Selector="TextBox">
-            <Setter Property="Background" Value="#FF2D2D30"/>
-            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Background" Value="#FFF0F0F0"/>
+            <Setter Property="Foreground" Value="Black"/>
             <Setter Property="BorderBrush" Value="#FF007ACC"/>
             <Setter Property="BorderThickness" Value="1"/>
             <Setter Property="FontSize" Value="14"/>
             <Setter Property="Padding" Value="5"/>
+            <Setter Property="CornerRadius" Value="8"/>
         </Style>
 
         <Style Selector="Button">
@@ -27,11 +28,12 @@
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="BorderThickness" Value="0"/>
             <Setter Property="Padding" Value="6,3"/>
+            <Setter Property="CornerRadius" Value="8"/>
         </Style>
 
         <Style Selector="ListBox">
-            <Setter Property="Background" Value="#FF2D2D30"/>
-            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Background" Value="#FFF0F0F0"/>
+            <Setter Property="Foreground" Value="Black"/>
             <Setter Property="BorderBrush" Value="#FF007ACC"/>
             <Setter Property="BorderThickness" Value="1"/>
             <Setter Property="Padding" Value="5"/>
@@ -39,10 +41,11 @@
             <Setter Property="HorizontalAlignment" Value="Stretch"/>
             <Setter Property="VerticalAlignment" Value="Stretch"/>
             <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
+            <Setter Property="CornerRadius" Value="8"/>
         </Style>
 
         <Style Selector="Border">
-            <Setter Property="CornerRadius" Value="5"/>
+            <Setter Property="CornerRadius" Value="8"/>
         </Style>
 
     </Application.Styles>
