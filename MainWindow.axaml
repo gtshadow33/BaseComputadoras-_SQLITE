@@ -1,0 +1,38 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="BaseComputadoras.MainWindow"
+        Title="Gestor de Computadoras"
+        Width="700"
+        Height="600"
+        CanResize="False">
+    
+    <StackPanel Spacing="10" Margin="10">
+        <!-- ComboBox de acciones -->
+        <ComboBox x:Name="AccionBox" Width="250">
+            <ComboBoxItem Content="Agregar"/>
+            <ComboBoxItem Content="Buscar por ID"/>
+            <ComboBoxItem Content="Buscar por Nombre"/>
+            <ComboBoxItem Content="Buscar por RAM"/>
+            <ComboBoxItem Content="Buscar por Disco"/>
+            <ComboBoxItem Content="Buscar por Funciona"/>
+            <ComboBoxItem Content="Actualizar"/>
+        </ComboBox>
+
+        <!-- Entradas -->
+        <TextBox x:Name="IdBox" Width="250" Watermark="ID" IsVisible="False"/>
+        <TextBox x:Name="NombreBox" Width="250" Watermark="Nombre"/>
+        <TextBox x:Name="RamBox" Width="250" Watermark="RAM"/>
+        <TextBox x:Name="DiscoBox" Width="250" Watermark="Disco"/>
+        <TextBox x:Name="FuncionaBox" Width="250" Watermark="Funciona (true/false)"/>
+
+        <!-- Botón ejecutar -->
+        <Button x:Name="EjecutarBtn" Content="Ejecutar" Width="120"/>
+
+        <!-- ListBox de resultados -->
+        <ListBox x:Name="ResultadosBox"
+                 Width="660"
+                 Height="250"
+                 Margin="10,5,10,10"
+                 ScrollViewer.VerticalScrollBarVisibility="Auto"/>
+    </StackPanel>
+</Window>
