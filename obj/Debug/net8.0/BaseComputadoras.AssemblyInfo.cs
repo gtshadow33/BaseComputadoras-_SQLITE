@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BaseComputadoras")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+12f6f7a9f89477ae44674002440a58ea700a30ff")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6af2a10d9b864e8e132da64508e57ff21cbc19b5")]
 [assembly: System.Reflection.AssemblyProductAttribute("BaseComputadoras")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BaseComputadoras")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

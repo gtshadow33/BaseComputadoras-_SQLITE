@@ -28,6 +28,7 @@
 /home/gts/.nuget/packages/k4os.hash.xxhash/1.0.8/lib/net6.0/K4os.Hash.xxHash.dll
 /home/gts/.nuget/packages/microcom.runtime/0.11.0/lib/net5.0/MicroCom.Runtime.dll
 /home/gts/.nuget/packages/microsoft.netcore.app.ref/8.0.20/ref/net8.0/Microsoft.CSharp.dll
+/home/gts/.nuget/packages/microsoft.data.sqlite.core/10.0.0/lib/net8.0/Microsoft.Data.Sqlite.dll
 /home/gts/.nuget/packages/microsoft.netcore.app.ref/8.0.20/ref/net8.0/Microsoft.VisualBasic.Core.dll
 /home/gts/.nuget/packages/microsoft.netcore.app.ref/8.0.20/ref/net8.0/Microsoft.VisualBasic.dll
 /home/gts/.nuget/packages/microsoft.netcore.app.ref/8.0.20/ref/net8.0/Microsoft.Win32.Primitives.dll
@@ -37,6 +38,9 @@
 /home/gts/.nuget/packages/mysql.data/9.5.0/lib/net8.0/MySql.Data.dll
 /home/gts/.nuget/packages/microsoft.netcore.app.ref/8.0.20/ref/net8.0/netstandard.dll
 /home/gts/.nuget/packages/skiasharp/2.88.9/lib/net6.0/SkiaSharp.dll
+/home/gts/.nuget/packages/sqlitepclraw.bundle_e_sqlite3/2.1.11/lib/netstandard2.0/SQLitePCLRaw.batteries_v2.dll
+/home/gts/.nuget/packages/sqlitepclraw.core/2.1.11/lib/netstandard2.0/SQLitePCLRaw.core.dll
+/home/gts/.nuget/packages/sqlitepclraw.provider.e_sqlite3/2.1.11/lib/net6.0/SQLitePCLRaw.provider.e_sqlite3.dll
 /home/gts/.nuget/packages/microsoft.netcore.app.ref/8.0.20/ref/net8.0/System.AppContext.dll
 /home/gts/.nuget/packages/microsoft.netcore.app.ref/8.0.20/ref/net8.0/System.Buffers.dll
 /home/gts/.nuget/packages/microsoft.netcore.app.ref/8.0.20/ref/net8.0/System.Collections.Concurrent.dll
@@ -57,6 +61,7 @@
 /home/gts/.nuget/packages/microsoft.netcore.app.ref/8.0.20/ref/net8.0/System.Data.Common.dll
 /home/gts/.nuget/packages/microsoft.netcore.app.ref/8.0.20/ref/net8.0/System.Data.DataSetExtensions.dll
 /home/gts/.nuget/packages/microsoft.netcore.app.ref/8.0.20/ref/net8.0/System.Data.dll
+/home/gts/.nuget/packages/system.data.sqlite/2.0.2/lib/netstandard2.1/System.Data.SQLite.dll
 /home/gts/.nuget/packages/microsoft.netcore.app.ref/8.0.20/ref/net8.0/System.Diagnostics.Contracts.dll
 /home/gts/.nuget/packages/microsoft.netcore.app.ref/8.0.20/ref/net8.0/System.Diagnostics.Debug.dll
 /home/gts/.nuget/packages/microsoft.netcore.app.ref/8.0.20/ref/net8.0/System.Diagnostics.DiagnosticSource.dll
