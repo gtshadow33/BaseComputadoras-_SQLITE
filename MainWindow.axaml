@@ -16,6 +16,7 @@
             <ComboBoxItem Content="Buscar por Disco"/>
             <ComboBoxItem Content="Buscar por Funciona"/>
             <ComboBoxItem Content="Actualizar"/>
+            <ComboBoxItem Content="Eliminar"/>
         </ComboBox>
 
         <!-- Entradas -->

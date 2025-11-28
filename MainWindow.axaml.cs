@@ -27,11 +27,12 @@ public partial class MainWindow : Window
     {
         string accion = (AccionBox.SelectedItem as ComboBoxItem)?.Content?.ToString() ?? "";
 
-        IdBox.IsVisible = accion == "Buscar por ID" || accion == "Actualizar";
+        IdBox.IsVisible = accion == "Buscar por ID" || accion == "Actualizar" || accion == "Eliminar";
         NombreBox.IsVisible = accion is "Agregar" or "Buscar por Nombre" or "Actualizar";
         RamBox.IsVisible = accion is "Agregar" or "Buscar por RAM" or "Actualizar";
         DiscoBox.IsVisible = accion is "Agregar" or "Buscar por Disco" or "Actualizar";
         FuncionaBox.IsVisible = accion is "Agregar" or "Buscar por Funciona" or "Actualizar";
+
     }
 
     private async void EjecutarAccion(object? sender, RoutedEventArgs e)
@@ -105,6 +106,18 @@ public partial class MainWindow : Window
             return;
         }
 
+        if (accion == "Buscar por Funciona" && string.IsNullOrWhiteSpace(FuncionaBox.Text))
+        {
+            await Mensaje("Debe especificar si funciona.");
+            return;
+        }
+
+        if (accion == "Eliminar" && string.IsNullOrWhiteSpace(IdBox.Text))
+        {
+            await Mensaje_largo("Tienes que poner el ID de la computadora a eliminar.");
+            return;
+        }
+
         using var con = new SqliteConnection(connStr);
         con.Open();
 
@@ -150,6 +163,9 @@ public partial class MainWindow : Window
                 upd.Parameters.AddWithValue("@id", id);
                 upd.ExecuteNonQuery();
                 break;
+            case "Eliminar":
+                Eliminar(con, id);  
+                break;
         }
         limpiarCampos();
     }
@@ -159,6 +175,23 @@ public partial class MainWindow : Window
         var ventana = new Window
         {
             Width = 300,
+            Height = 150,
+            Content = new TextBlock
+            {
+                Text = texto,
+                HorizontalAlignment = Avalonia.Layout.HorizontalAlignment.Center,
+                VerticalAlignment = Avalonia.Layout.VerticalAlignment.Center
+            }
+        };
+
+        await ventana.ShowDialog(this);
+    }
+
+    async Task Mensaje_largo(string texto)
+    {
+        var ventana = new Window
+        {
+            Width = 500,
             Height = 150,
             Content = new TextBlock
             {
@@ -202,6 +235,14 @@ public partial class MainWindow : Window
         cmd.CommandText = $"SELECT * FROM computadoras WHERE {campo} LIKE @v";
         cmd.Parameters.AddWithValue("@v", $"{texto}%");
         MostrarResultados(cmd);
+    }
+
+    void Eliminar(SqliteConnection con, int id)
+    {
+        var cmd = con.CreateCommand();
+        cmd.CommandText = "DELETE FROM computadoras WHERE id=@id";
+        cmd.Parameters.AddWithValue("@id", id);
+        cmd.ExecuteNonQuery();
     }
 
     void MostrarResultados(SqliteCommand cmd)
