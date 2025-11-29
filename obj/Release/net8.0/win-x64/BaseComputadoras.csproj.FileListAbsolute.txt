@@ -736,7 +736,6 @@
 /home/gts/c#/BaseComputadoras _SQLITE/bin/Release/net8.0/win-x64/hostfxr.dll
 /home/gts/c#/BaseComputadoras _SQLITE/bin/Release/net8.0/win-x64/hostpolicy.dll
 /home/gts/c#/BaseComputadoras _SQLITE/bin/Release/net8.0/win-x64/mscordaccore.dll
-/home/gts/c#/BaseComputadoras _SQLITE/bin/Release/net8.0/win-x64/mscordaccore_amd64_amd64_8.0.2025.41914.dll
 /home/gts/c#/BaseComputadoras _SQLITE/bin/Release/net8.0/win-x64/mscordbi.dll
 /home/gts/c#/BaseComputadoras _SQLITE/bin/Release/net8.0/win-x64/mscorrc.dll
 /home/gts/c#/BaseComputadoras _SQLITE/bin/Release/net8.0/win-x64/msquic.dll
@@ -754,3 +753,4 @@
 /home/gts/c#/BaseComputadoras _SQLITE/obj/Release/net8.0/win-x64/BaseComputadoras.pdb
 /home/gts/c#/BaseComputadoras _SQLITE/obj/Release/net8.0/win-x64/BaseComputadoras.genruntimeconfig.cache
 /home/gts/c#/BaseComputadoras _SQLITE/obj/Release/net8.0/win-x64/ref/BaseComputadoras.dll
+/home/gts/c#/BaseComputadoras _SQLITE/bin/Release/net8.0/win-x64/mscordaccore_amd64_amd64_8.0.2225.52707.dll
