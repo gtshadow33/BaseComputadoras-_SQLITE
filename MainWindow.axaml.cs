@@ -2,7 +2,6 @@ using Avalonia.Controls;
 using Avalonia.Interactivity;
 using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace BaseComputadoras;
 
@@ -36,14 +35,34 @@ public partial class MainWindow : Window
         ResultadosBox.ItemsSource = new List<string>();
         string accion = (AccionBox.SelectedItem as ComboBoxItem)?.Content?.ToString() ?? "";
 
-        int.TryParse(IdBox.Text, out int id);
-        int.TryParse(RamBox.Text, out int ram);
-        int.TryParse(DiscoBox.Text, out int disco);
+        // Variables
+        int id = 0, ram = 0, disco = 0;
 
+        // Validaciones de números
+        if (!string.IsNullOrWhiteSpace(IdBox.Text) && !int.TryParse(IdBox.Text, out id))
+        {
+            await MessageHelper.Mostrar(this, "El ID debe ser un número entero.");
+            return;
+        }
+
+        if (!string.IsNullOrWhiteSpace(RamBox.Text) && !int.TryParse(RamBox.Text, out ram))
+        {
+            await MessageHelper.Mostrar(this, "La RAM debe ser un número entero.");
+            return;
+        }
+
+        if (!string.IsNullOrWhiteSpace(DiscoBox.Text) && !int.TryParse(DiscoBox.Text, out disco))
+        {
+            await MessageHelper.Mostrar(this, "El disco debe ser un número entero.");
+            return;
+        }
+
+        // Validación de booleano
         bool funciona = FuncionaBox.Text?.Trim().ToLower() switch
         {
             "true" or "1" or "si" or "sí" => true,
             "false" or "0" or "no" => false,
+            "" => false,
             _ => false
         };
 
@@ -105,15 +124,16 @@ public partial class MainWindow : Window
             return;
         }
 
+        // ----------------- ACCIONES -----------------
         switch (accion)
         {
             case "Agregar":
-                DatabaseHelper.Agregar(NombreBox.Text, ram, disco, funciona);
+                DatabaseHelper.Agregar(NombreBox.Text!, ram, disco, funciona);
                 await MessageHelper.Mostrar(this, "Computadora agregada correctamente.");
                 break;
 
             case "Actualizar":
-                DatabaseHelper.Actualizar(id, NombreBox.Text, ram, disco, funciona);
+                DatabaseHelper.Actualizar(id, NombreBox.Text!, ram, disco, funciona);
                 await MessageHelper.Mostrar(this, "Computadora actualizada correctamente.");
                 break;
 
