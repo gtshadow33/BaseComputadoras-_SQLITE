@@ -2,6 +2,7 @@ using Avalonia.Controls;
 using Avalonia.Interactivity;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace BaseComputadoras;
 
@@ -11,12 +12,18 @@ public partial class MainWindow : Window
     {
         InitializeComponent();
 
-        DatabaseHelper.InicializarBaseDatos();
+        // ⚠ En constructor no se puede usar 'await' directamente, usamos un método async separado
+        InicializarAsync();
 
         IdBox.IsVisible = false;
         AccionBox.SelectedIndex = 0;
         AccionBox.SelectionChanged += CambiarCamposVisibles;
         EjecutarBtn.Click += EjecutarAccion;
+    }
+
+    private async void InicializarAsync()
+    {
+        await DatabaseHelper.InicializarBaseDatosAsync();
     }
 
     private void CambiarCamposVisibles(object? sender, SelectionChangedEventArgs e)
@@ -35,10 +42,8 @@ public partial class MainWindow : Window
         ResultadosBox.ItemsSource = new List<string>();
         string accion = (AccionBox.SelectedItem as ComboBoxItem)?.Content?.ToString() ?? "";
 
-        // Variables
         int id = 0, ram = 0, disco = 0;
 
-        // Validaciones de números
         if (!string.IsNullOrWhiteSpace(IdBox.Text) && !int.TryParse(IdBox.Text, out id))
         {
             await MessageHelper.Mostrar(this, "El ID debe ser un número entero.");
@@ -57,7 +62,6 @@ public partial class MainWindow : Window
             return;
         }
 
-        // Validación de booleano
         bool funciona = FuncionaBox.Text?.Trim().ToLower() switch
         {
             "true" or "1" or "si" or "sí" => true,
@@ -66,7 +70,7 @@ public partial class MainWindow : Window
             _ => false
         };
 
-        // ----------------- VALIDACIONES -----------------
+        // Validaciones
         if (accion == "Agregar" || accion == "Actualizar")
         {
             if (string.IsNullOrWhiteSpace(NombreBox.Text))
@@ -124,42 +128,42 @@ public partial class MainWindow : Window
             return;
         }
 
-        // ----------------- ACCIONES -----------------
+        // Acciones
         switch (accion)
         {
             case "Agregar":
-                DatabaseHelper.Agregar(NombreBox.Text!, ram, disco, funciona);
+                await DatabaseHelper.AgregarAsync(NombreBox.Text!, ram, disco, funciona);
                 await MessageHelper.Mostrar(this, "Computadora agregada correctamente.");
                 break;
 
             case "Actualizar":
-                DatabaseHelper.Actualizar(id, NombreBox.Text!, ram, disco, funciona);
+                await DatabaseHelper.ActualizarAsync(id, NombreBox.Text!, ram, disco, funciona);
                 await MessageHelper.Mostrar(this, "Computadora actualizada correctamente.");
                 break;
 
             case "Eliminar":
-                DatabaseHelper.Eliminar(id);
+                await DatabaseHelper.EliminarAsync(id);
                 await MessageHelper.Mostrar(this, "Computadora eliminada correctamente.");
                 break;
 
             case "Buscar por ID":
-                ResultadosBox.ItemsSource = DatabaseHelper.Buscar("id", id);
+                ResultadosBox.ItemsSource = await DatabaseHelper.BuscarAsync("id", id);
                 break;
 
             case "Buscar por Nombre":
-                ResultadosBox.ItemsSource = DatabaseHelper.BuscarLike("nombre", NombreBox.Text ?? "");
+                ResultadosBox.ItemsSource = await DatabaseHelper.BuscarLikeAsync("nombre", NombreBox.Text ?? "");
                 break;
 
             case "Buscar por RAM":
-                ResultadosBox.ItemsSource = DatabaseHelper.Buscar("ram", ram);
+                ResultadosBox.ItemsSource = await DatabaseHelper.BuscarAsync("ram", ram);
                 break;
 
             case "Buscar por Disco":
-                ResultadosBox.ItemsSource = DatabaseHelper.Buscar("disco", disco);
+                ResultadosBox.ItemsSource = await DatabaseHelper.BuscarAsync("disco", disco);
                 break;
 
             case "Buscar por Funciona":
-                ResultadosBox.ItemsSource = DatabaseHelper.Buscar("funciona", funciona ? 1 : 0);
+                ResultadosBox.ItemsSource = await DatabaseHelper.BuscarAsync("funciona", funciona ? 1 : 0);
                 break;
         }
 
